@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./quiz.css">
+</head>
+
+<body>
+    <div id="first-page">
+        <div id="first-page-header">Select the challenge</div>
+        <div id="first-page-body"></div>
+        <div id="first-page-footer">
+            <button onclick="goToChallenge()">Go to Challenge</button>
+        </div>
+    </div>
+    <div id="second-page">
+        <div id="second-page-header">Quiz</div>
+        <div id="second-page-body"></div>
+        <div id="second-page-footer">
+            <button onclick="submitQuiz()">Submit the challenge</button>
+            <div id="second-page-footer-score"></div>
+        </div>
+    </div>
+    <script src="quiz.js"></script>
+</body>
+
+</html>

@@ -3,6 +3,7 @@ package com.telusko.quizapp.controller;
 
 import com.telusko.quizapp.model.Question;
 import com.telusko.quizapp.model.QuestionWrapper;
+import com.telusko.quizapp.model.Quiz;
 import com.telusko.quizapp.model.Response;
 import com.telusko.quizapp.service.QuizService;
 
@@ -29,8 +30,10 @@ public class QuizController {
     @GetMapping("get/{id}")
     public ResponseEntity<List<QuestionWrapper>> getQuizQuestions(@PathVariable Integer id){
         return quizService.getQuizQuestions(id);
-
-
+    }
+    @GetMapping("getAll")
+    public ResponseEntity<List<Quiz>> getAllQuizQuestions(){
+        return  quizService.getAllQuiz();
     }
     @PostMapping("submit/{id}")
     public ResponseEntity<Integer> submitQuiz(@PathVariable Integer id, @RequestBody List<Response> responses){

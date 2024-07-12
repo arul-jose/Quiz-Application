@@ -1,32 +1,79 @@
-const loopData = () => {
+const onload = () => {
+    let url = `http://localhost:8080/quiz/getAll`;
 
-    let apiCall = `http://localhost:8080/quiz/get/1`;
-    const mainEle = document.getElementById('main');
-
-    fetch(apiCall)
+    fetch(url)
         .then(response => response.json())
         .then(data => {
-            console.log(data);
+            const firstPageBody = document.getElementById("first-page-body")
+            for (let i = 0; i < data.length; i++) {
+                const challengeName = data[i].title;
+                const challengeId = data[i].id;
+
+                const inputElement = document.createElement("input");
+                inputElement.setAttribute("type", "radio");
+                inputElement.setAttribute("id", challengeId);
+                inputElement.setAttribute("value", challengeName);
+                inputElement.setAttribute("name", "challenge-input-box");
+
+                const labelElement = document.createElement("label")
+                labelElement.setAttribute("for", challengeId);
+
+                const labelElementText = document.createTextNode(challengeName);
+                labelElement.appendChild(labelElementText);
+
+                firstPageBody.appendChild(inputElement);
+                firstPageBody.appendChild(labelElement);
+
+            }
+        });
+}
+const goToChallenge = () => {
+    // Find the selected Quiz
+    const inputElementsList = document.getElementsByName("challenge-input-box");
+    const challengeSelected = {};
+
+    for (let i = 0; i < inputElementsList.length; i++) {
+        if (inputElementsList[i].checked) {
+
+             //alert("You have selected "+  inputElementsList[i].value);
+            challengeSelected["id"] = inputElementsList[i].id;
+            challengeSelected["value"] = inputElementsList[i].value;
+            //break;
+        }
+    }
+
+//console.log(challengeSelected);
+    // Validate the user has given any selection
+    if (challengeSelected.hasOwnProperty("id")) {
+        alert("You have selected " + challengeSelected["value"]);
+        loadQuizQuestions(challengeSelected["id"]);
+    }
+    else {
+        alert("You have not selected any challenge. Please choose a challenge to proceed.");
+    }
+
+   
+}
+
+let quizId = null;
+const question_id = [];
+
+const loadQuizQuestions = (id) => {
+    quizId = id;
+    // Hide First Page and show second page
+    document.getElementById("first-page").style.display = "none";
+    document.getElementById("second-page").style.display = "block";
+
+    // Get selected Quiz Questions
+    const secondPageBody = document.getElementById("second-page-body");
+    const url = "http://localhost:8080/quiz/get/" + id;
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
             for (let i = 0; i < data.length; i++) {
                 let obj = data[i];
-                // <div id="questionbox">
-                // <div id="question">What is a class in Java?</div>
-                // <div id="option1">
-                //     <input type="radio" id="html" name="fav_language" value="HTML">
-                //       <label for="html">HTML</label>
-                // </div>
-                // <div id="option2">
-                //     <input type="radio" id="html">
-                //       <label for="html">html</label>
-                // </div>
-                // <div id="option3">
-                //     <input type="radio" id="html" name="fav_language" value="HTML">
-                //       <label for="html">HTML</label>
-                // </div>
-                // <div id="option4">
-                //     <input type="radio" id="html" name="fav_language" value="HTML">
-                //       <label for="html">HTML</label>
-                // </div>
+                question_id.push(obj.id);
+
                 const questionbox = document.createElement('div');
                 questionbox.setAttribute("class", "questionbox");
 
@@ -38,8 +85,8 @@ const loopData = () => {
 
                 const option1 = document.createElement('div');
                 option1.setAttribute("class", "option1");
-             
-                
+
+
 
                 const option1input = document.createElement("input");
                 option1input.setAttribute("type", "radio");
@@ -72,7 +119,7 @@ const loopData = () => {
                 option2label.appendChild(option2Text);
                 option2.appendChild(option2input);
                 option2.appendChild(option2label);
-                
+
 
                 const option3 = document.createElement('div');
                 option3.setAttribute("class", "option3");
@@ -91,7 +138,7 @@ const loopData = () => {
                 option3.appendChild(option3input);
                 option3.appendChild(option3label);
 
-              
+
 
                 const option4 = document.createElement('div');
                 option4.setAttribute("class", "option4");
@@ -109,7 +156,7 @@ const loopData = () => {
                 option4label.appendChild(option4Text);
                 option4.appendChild(option4input);
                 option4.appendChild(option4label);
-               
+
 
 
                 questionbox.appendChild(question);
@@ -118,16 +165,59 @@ const loopData = () => {
                 questionbox.appendChild(option3);
                 questionbox.appendChild(option4);
 
-            
-
-
-                main.appendChild(questionbox);
-
-
+                secondPageBody.appendChild(questionbox);
             }
+        });
+}
+const submitQuiz = () => {
+    // Find selected answers for all questions
+    const response = [];
+    
+    for(let a=0; a<question_id.length; a++) {
+        
+        const inputElementsList = document.getElementsByName(question_id[a]);
+        
+        for (let i = 0; i < inputElementsList.length; i++) {
+            if (inputElementsList[i].checked) {
+                const questionResponse = {};
+                questionResponse["id"] = inputElementsList[i].name;
+                questionResponse["response"] = inputElementsList[i].value;
+                response.push(questionResponse);
+            }
+        }
+    }
 
-            ;
+    if(response.length != question_id.length) {
+        alert("Please fill the answers for all the questions.");
+    }
+    else {
+        fetch("http://localhost:8080/quiz/submit/"+quizId, {
+
+            // Adding method type 
+            method: "POST",
+    
+            // Adding body or contents to send 
+            body: JSON.stringify(response),
+    
+            // Adding headers to the request 
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
         })
-};
-
-loopData()
+    
+            // Converting to JSON 
+            .then(response => response.json())
+    
+            // Displaying results to console 
+            .then(json => {
+                console.log(json);
+                const yourScore = document.getElementById('second-page-footer-score');
+                const score = document.createTextNode("Your Score is:" + json);
+    
+                yourScore.appendChild(score);
+    
+            });
+    
+    }
+}
+onload();
