@@ -1,6 +1,57 @@
 #first-page {
 
 }
+
+
+#first-page{
+   background-color: white;
+}
+#first-page-header{
+   
+   margin-left: 1090px;
+   font-size: 40px;
+   font-weight: bolder;
+   color: rgb(42, 42, 230);
+
+}
+#first-page-body{
+   background-color: red;
+}
+
+
+#goToChallenge{
+   margin-left: 1100px;
+   background-color: rgb(79, 79, 226);
+   color: white;
+   height:40px;
+   width: 300px;
+   margin-top: 200px;
+   border-radius: 3px;
+   box-shadow:white  10px;
+   font-size: 20px;
+   font-weight: bold;
+}
+
+#first-page-footer{
+   
+}
 #second-page {
    display: none;
+   background-color: white;
 }
+
+.questionbox{
+   background-color: rgb(233, 222, 222);
+
+}
+
+.question{
+background-color:rgb(79, 79, 226); 
+color: white;
+height: 35px;
+}
+
+.option1,.option2,.option3,.option4{
+height: 30px;
+}
+

@@ -9,11 +9,11 @@ CREATE TABLE question (
     difficulty_level TEXT NOT NULL,
     category TEXT NOT NULL
 );
-CREATE TABLE quiz(
-    id SERIAL PRIMARY KEY,
-    title TEXT NOT NULL
-);
-CREATE TABLE quiz_questions(
-    quiz_id INTEGER REFERENCES quiz (id),
-    question_id INTEGER REFERENCES question (id)
-);
+-- CREATE TABLE quiz(
+--     id SERIAL PRIMARY KEY,
+--     title TEXT NOT NULL
+-- );
+-- CREATE TABLE quiz_questions(
+--     quiz_id INTEGER REFERENCES quiz (id),
+--     question_id INTEGER REFERENCES question (id)
+-- );

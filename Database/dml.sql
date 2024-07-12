@@ -37,25 +37,25 @@ VALUES
     (34, 'The standard header _______ is used for variable list arguments (…) in C.', '<stdio.h >','<stdlib.h>', '<math.h>', '<stdarg.h>', ' <stdio.h >','Easy', 'C');
 
 
-INSERT INTO quiz (id, title)
-VALUES
-(1,	'JQuiz'),
-(2,	'PYQuiz'),
-(3,	'CQuiz');
+-- INSERT INTO quiz (id, title)
+-- VALUES
+-- (1,	'JQuiz'),
+-- (2,	'PYQuiz'),
+-- (3,	'CQuiz');
 
-INSERT INTO quiz_questions(quiz_id, question_id)
-VALUES
-(1,	19),
-(1,	21),
-(1,	7),
-(1,	10),
-(2,	3),
-(2,	4),
-(2,	9),
-(2,	11),
-(2,	18),
-(3,	30),
-(3,	31),
-(3,	32),
-(3,	33),
-(3,	34);
+-- INSERT INTO quiz_questions(quiz_id, question_id)
+-- VALUES
+-- (1,	19),
+-- (1,	21),
+-- (1,	7),
+-- (1,	10),
+-- (2,	3),
+-- (2,	4),
+-- (2,	9),
+-- (2,	11),
+-- (2,	18),
+-- (3,	30),
+-- (3,	31),
+-- (3,	32),
+-- (3,	33),
+-- (3,	34);

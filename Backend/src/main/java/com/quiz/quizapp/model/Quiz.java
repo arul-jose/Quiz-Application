@@ -1,4 +1,4 @@
-package com.telusko.quizapp.model;
+package com.quiz.quizapp.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
