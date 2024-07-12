@@ -11,9 +11,9 @@ CREATE TABLE question (
 );
 CREATE TABLE quiz(
     id SERIAL PRIMARY KEY,
-    title TEXT NOT NULL,
+    title TEXT NOT NULL
 );
 CREATE TABLE quiz_questions(
-    quiz_id SERIAL PRIMARY KEY,
-    question_id TEXT NOT NULL,
+    quiz_id INTEGER REFERENCES quiz (id),
+    question_id INTEGER REFERENCES question (id)
 );
