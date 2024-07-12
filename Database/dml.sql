@@ -31,7 +31,11 @@ VALUES
     (28, 'Which of the following is not a valid C variable name?', ' int number', 'float rate', 'int variable_count', 'int $main', 'int $main', 'Easy', 'C'),
     (29, 'Which is valid C expression?', 'int my_num = 100,000', 'int my_num = 100000', 'int my num = 1000', 'int $my_num = 10000', 'int $my_num = 10000','Easy', 'C'),
     (30, 'Which of the following cannot be a variable name in C?', 'volatile', 'true', 'friend', 'export', 'volatile', 'Easy', 'C'),
-    (31, 'Which of the following typecasting is accepted by C language?', 'Widening conversions','Narrowing conversions' ,'Widening & Narrowing conversions',' None of the mentioned', 'Widening & Narrowing conversions','Easy', 'C');
+    (31, 'Which of the following typecasting is accepted by C language?', 'Widening conversions','Narrowing conversions' ,'Widening & Narrowing conversions',' None of the mentioned', 'Widening & Narrowing conversions','Easy', 'C'),
+    (32, 'Which of the following return-type cannot be used for a function in C?', 'char *','struct', 'void', 'none of the mentioned', ' None of the mentioned','Easy', 'C'),
+    (33, ' What is the sizeof(char) in a 32-bit C compiler?', ' 1 bit','2 bits', '1 Byte', '2 Bytes', ' 1 Byte','Easy', 'C'),
+    (34, 'The standard header _______ is used for variable list arguments (…) in C.', '<stdio.h >','<stdlib.h>', '<math.h>', '<stdarg.h>', ' <stdio.h >','Easy', 'C');
+
 
 INSERT INTO quiz (id, title)
 VALUES
