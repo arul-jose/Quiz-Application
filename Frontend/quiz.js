@@ -212,9 +212,10 @@ const submitQuiz = () => {
             .then(json => {
                 console.log(json);
                 const yourScore = document.getElementById('second-page-footer-score');
-                const score = document.createTextNode("Your Score is:" + json);
+                const score = document.createTextNode("Your Score is : " + json);
     
                 yourScore.appendChild(score);
+                
     
             });
     

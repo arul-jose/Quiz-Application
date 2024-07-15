@@ -15,7 +15,11 @@
 
 }
 #first-page-body{
-   background-color: red;
+   background-color:white;
+   margin-left: 1150px;
+   font-size: 30px;
+   margin-top: 60px;
+
 }
 
 
@@ -25,7 +29,7 @@
    color: white;
    height:40px;
    width: 300px;
-   margin-top: 200px;
+   margin-top: 80px;
    border-radius: 3px;
    box-shadow:white  10px;
    font-size: 20px;
@@ -40,18 +44,50 @@
    background-color: white;
 }
 
-.questionbox{
-   background-color: rgb(233, 222, 222);
 
+#second-page-header{
+   font-size: 30px;
+   font-weight: bold;
+   width: 1000px;
+   padding-top: 10px;
+   padding-bottom: 10px;
+}
+.questionbox{
+   background-color: white;
+   width: 1000px;
 }
 
 .question{
-background-color:rgb(79, 79, 226); 
+background-color:rgb(97 128 222) ;
 color: white;
-height: 35px;
+padding-top: 5px;
+padding-bottom: 5px;
+width: 1000px;
+font-size: 28px;
 }
 
 .option1,.option2,.option3,.option4{
-height: 30px;
+font-size: 25px;
+padding-top: 10px;
+padding-bottom: 10px;
 }
 
+
+#submitChallenge{
+   background-color: rgb(79, 79, 226);
+   color: white;
+   height:40px;
+   width: 300px;
+   border-radius: 3px;
+   box-shadow:white  10px;
+   font-size: 20px;
+   font-weight: bold;
+   margin-left: 350px;
+}
+
+#second-page-footer-score{
+   font-size: 25px;
+   color: rgb(5, 5, 100);
+   margin-top: 10px;
+   margin-left: 400px;
+}
